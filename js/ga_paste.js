@@ -49,8 +49,10 @@ GaPaste.prototype.pasteGoal_urlDest = function() {
     document.querySelector('[name="C_EDITGOAL-monetaryValue"]').value = data.monetaryValue;
     
     if (data.addFunnel) {
-        document.querySelector('[name="C_EDITGOAL-addFunnel"]').click();
         document.querySelector('[name="C_EDITGOAL-addFunnel"]').checked = data.addFunnel;
+        // Double click to fire the event and keep the state.
+        document.querySelector('[name="C_EDITGOAL-addFunnel"]').click();
+        document.querySelector('[name="C_EDITGOAL-addFunnel"]').click();
         
         document.querySelector('[name="C_EDITGOAL-step1Required"]').checked = data.step1Required;
 
