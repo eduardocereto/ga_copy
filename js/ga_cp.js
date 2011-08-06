@@ -38,7 +38,7 @@ GaCopy.prototype.getGoalVariation = function() {
             break;
         }
     }
-    console.log('getGoalVariation:', this.variation);
+    log('getGoalVariation:', this.variation);
     return this.variation;
 };
 
@@ -111,7 +111,7 @@ GaCopy.prototype.save = function() {
 /**********************/
 
 GaCopy.prototype.copyFilter_PREDEFINED = function() {
-    console.log('parsing PREDEFINED');
+    log('parsing PREDEFINED');
     var data = {};
 
     data.name = document.querySelector('[name="C_EDITFILTER-name"]').value;
