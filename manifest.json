@@ -1,10 +1,15 @@
 {
     "name": "GA Copy and Paste",
-    "version": "0.5",
-    "description": "The first extension that I made.",
+    "version": "0.6",
+    "description": "Copy and Paste Goals and Filters for Google Analytics",
+    "icons": { 
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png" 
+    },
     "page_action": {
         "default_title": "GA copy & paste",
-        "default_icon": "icon.png",
+        "default_icon": "icon16.png",
         "popup" : "popup.html"
     },
     "permissions": [
