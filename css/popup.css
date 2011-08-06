@@ -15,7 +15,6 @@ body{
 }
 
 content{
-    padding: 0 10px;
     background-color: #fdfdfd;
 }
 
@@ -144,3 +143,4 @@ header{
     font-size: .76em;
     display: none;
 }
+
