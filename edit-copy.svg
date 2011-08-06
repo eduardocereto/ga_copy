@@ -43,7 +43,7 @@
      showgrid="false"
      inkscape:zoom="12.166667"
      inkscape:cx="24"
-     inkscape:cy="24"
+     inkscape:cy="20.712329"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -469,50 +469,63 @@
     </g>
   </g>
   <g
-     id="g3950"
-     transform="matrix(0.88995019,0,0,0.88995019,2.7367504,3.5689073)"
+     id="g3070"
      inkscape:export-filename="/home/dudus/Desktop/goal_copy/icon128.png"
-     inkscape:export-xdpi="1229.3298"
-     inkscape:export-ydpi="1229.3298">
+     inkscape:export-xdpi="1030.5883"
+     inkscape:export-ydpi="1030.5883">
+    <rect
+       y="22.602741"
+       x="14.79452"
+       height="11.178082"
+       width="11.178082"
+       id="rect3068"
+       style="fill:none;fill-opacity:1" />
     <g
-       id="g3928">
-      <path
-         inkscape:connector-curvature="0"
-         d="m 14.773103,22.581318 6.285823,1.23e-4 v 7.714068 h -6.285823 v -7.714068 z"
-         style="fill:url(#linearGradient3961);fill-opacity:1;stroke:url(#linearGradient3963);stroke-width:0.28546339;stroke-linejoin:round"
-         id="rect2594-17" />
-      <text
-         xml:space="preserve"
-         style="font-size:8px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;font-family:Trebuchet MS;-inkscape-font-specification:Trebuchet MS"
-         x="15.293863"
-         y="27.162415"
-         id="text3915"
-         sodipodi:linespacing="125%"><tspan
-           sodipodi:role="line"
-           id="tspan3917"
-           x="15.293863"
+       inkscape:export-ydpi="1229.3298"
+       inkscape:export-xdpi="1229.3298"
+       inkscape:export-filename="/home/dudus/Desktop/goal_copy/icon128.png"
+       transform="matrix(0.88995019,0,0,0.88995019,2.7367504,3.5689073)"
+       id="g3950">
+      <g
+         id="g3928">
+        <path
+           id="rect2594-17"
+           style="fill:url(#linearGradient3961);fill-opacity:1;stroke:url(#linearGradient3963);stroke-width:0.28546339;stroke-linejoin:round"
+           d="m 14.773103,22.581318 6.285823,1.23e-4 v 7.714068 h -6.285823 v -7.714068 z"
+           inkscape:connector-curvature="0" />
+        <text
+           sodipodi:linespacing="125%"
+           id="text3915"
            y="27.162415"
-           style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#666666;fill-opacity:1;font-family:Trebuchet MS;-inkscape-font-specification:Trebuchet MS">G</tspan></text>
-    </g>
-    <g
-       id="g3945">
-      <path
-         inkscape:connector-curvature="0"
-         d="m 18.722183,24.855178 6.285538,1.23e-4 v 7.714069 h -6.285538 v -7.714069 z"
-         style="fill:url(#linearGradient3965);fill-opacity:1;stroke:url(#linearGradient3967);stroke-width:0.28546053;stroke-linejoin:round"
-         id="path3064-2" />
-      <text
-         xml:space="preserve"
-         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;font-family:Trebuchet MS;-inkscape-font-specification:Trebuchet MS"
-         x="19.232876"
-         y="29.178083"
-         id="text3919"
-         sodipodi:linespacing="125%"><tspan
-           sodipodi:role="line"
-           id="tspan3921"
-           x="19.232876"
+           x="15.293863"
+           style="font-size:8px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;font-family:Trebuchet MS;-inkscape-font-specification:Trebuchet MS"
+           xml:space="preserve"><tspan
+             style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#666666;fill-opacity:1;font-family:Trebuchet MS;-inkscape-font-specification:Trebuchet MS"
+             y="27.162415"
+             x="15.293863"
+             id="tspan3917"
+             sodipodi:role="line">G</tspan></text>
+      </g>
+      <g
+         id="g3945">
+        <path
+           id="path3064-2"
+           style="fill:url(#linearGradient3965);fill-opacity:1;stroke:url(#linearGradient3967);stroke-width:0.28546053;stroke-linejoin:round"
+           d="m 18.722183,24.855178 6.285538,1.23e-4 v 7.714069 h -6.285538 v -7.714069 z"
+           inkscape:connector-curvature="0" />
+        <text
+           sodipodi:linespacing="125%"
+           id="text3919"
            y="29.178083"
-           style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#666666;fill-opacity:1;font-family:Trebuchet MS;-inkscape-font-specification:Trebuchet MS">A</tspan></text>
+           x="19.232876"
+           style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:none;font-family:Trebuchet MS;-inkscape-font-specification:Trebuchet MS"
+           xml:space="preserve"><tspan
+             style="font-size:5px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#666666;fill-opacity:1;font-family:Trebuchet MS;-inkscape-font-specification:Trebuchet MS"
+             y="29.178083"
+             x="19.232876"
+             id="tspan3921"
+             sodipodi:role="line">A</tspan></text>
+      </g>
     </g>
   </g>
 </svg>
