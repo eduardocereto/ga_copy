@@ -1,24 +1,24 @@
 chrome.extension.onRequest.addListener(
     function(request, sender, sendResponse) {
-        if (request.action == 'copy'){
+        if (request.action == 'copy') {
             var _gac = new GaCopy();
-            if(_gac.copy()){
+            if (_gac.copy()) {
                 sendResponse(_gac.save());
-            }else{
+            }else {
                 sendResponse({});
             }
         }
-        if(request.action == 'paste'){
+        if (request.action == 'paste') {
             var _gap = new GaPaste(request.obj);
             console.log('Pasting', _gap);
-            try{
+            try {
                 _gap.paste();
                 sendResponse({});
-            }catch(e){
-                sendResponse({error:true});
+            }catch (e) {
+                sendResponse({error: true});
             }
         }
-        if(request.action == 'check'){
+        if (request.action == 'check') {
             var _gac = new GaCopy();
             sendResponse({
                 action: 'check',

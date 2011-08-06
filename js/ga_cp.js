@@ -1,4 +1,4 @@
-DEBUG = true;
+DEBUG = false;
 VERSION = '1';
 
 function log() {
@@ -43,8 +43,24 @@ GaCopy.prototype.getGoalVariation = function() {
 };
 
 GaCopy.prototype.getFilterVariation = function() {
-    //TODO
-    return undefined;
+    this.variation = undefined;
+    if (this.type !== 'filter') {
+        return this.variation;
+    }
+
+    var filterMethod = document.querySelector('[name="C_EDITFILTER-filterMethod"]:checked');
+    if (filterMethod && filterMethod.value === 'new') {
+        var typeCustom = document.querySelector('[name="C_EDITFILTER-typeCustom"]:checked');
+        if (typeCustom && typeCustom.value === 'false') {
+            this.variation = 'PREDEFINED';
+        }else if (typeCustom && typeCustom.value === 'true') {
+            var filterType = document.querySelector('[name="C_EDITFILTER-filterType"]:checked');
+            if (filterType && filterType.value) {
+                this.variation = filterType.value;
+            }
+        }
+    }
+    return this.variation;
 };
 
 GaCopy.prototype.copy = function() {
@@ -94,6 +110,31 @@ GaCopy.prototype.save = function() {
 /*** FILTER PARSERS ***/
 /**********************/
 
+GaCopy.prototype.copyFilter_PREDEFINED = function() {
+    console.log('parsing PREDEFINED');
+    var data = {};
+
+    data.name = document.querySelector('[name="C_EDITFILTER-name"]').value;
+    data.filterIncludeExcludeType = document.querySelector('[name="C_EDITFILTER-filterIncludeExcludeType"]').value;
+    data.predefinedType = document.querySelector('[name="C_EDITFILTER-predefinedType"]').value;
+    data.comparisonOperator = document.querySelector('[name="C_EDITFILTER-comparisonOperator"]').value;
+    //data.domainName = document.querySelector('.ID-domainName input').value;
+    //data.caseSensitive = document.querySelector('[name="C_EDITFILTER-caseSensitive"]').value;
+
+    this.data = data;
+    return data;
+};
+GaCopy.prototype.copyFilter_PREDEFINED_domainName = function() {};
+GaCopy.prototype.copyFilter_PREDEFINED_ipAddress = function() {};
+GaCopy.prototype.copyFilter_PREDEFINED_subDirectory = function() {};
+GaCopy.prototype.copyFilter_EXCLUDE = function() {};
+GaCopy.prototype.copyFilter_INCLUDE = function() {};
+GaCopy.prototype.copyFilter_LOWER = function() {};
+GaCopy.prototype.copyFilter_UPPER = function() {};
+GaCopy.prototype.copyFilter_REPLACE = function() {};
+GaCopy.prototype.copyFilter_ADVANCED = function() {};
+
+
 /********************/
 /*** GOAL PARSERS ***/
 /********************/
@@ -128,7 +169,7 @@ GaCopy.prototype.copyGoal_urlDest = function() {
     return data;
 };
 
-GaCopy.prototype.copyGoal_engTime = function(){
+GaCopy.prototype.copyGoal_engTime = function() {
     log('parsing engTime');
     var data = {};
     data.name = document.querySelector('[name="C_EDITGOAL-name"]').value;
@@ -140,9 +181,9 @@ GaCopy.prototype.copyGoal_engTime = function(){
     data.monetaryValue = document.querySelector('[name="C_EDITGOAL-monetaryValue"]').value;
     this.data = data;
     return data;
-}
+};
 
-GaCopy.prototype.copyGoal_engPages = function(){
+GaCopy.prototype.copyGoal_engPages = function() {
     log('parsing engPages');
     var data = {};
     data.name = document.querySelector('[name="C_EDITGOAL-name"]').value;
@@ -152,30 +193,30 @@ GaCopy.prototype.copyGoal_engPages = function(){
     data.monetaryValue = document.querySelector('[name="C_EDITGOAL-monetaryValue"]').value;
     this.data = data;
     return data;
-}
+};
 
-GaCopy.prototype.copyGoal_event = function(){
+GaCopy.prototype.copyGoal_event = function() {
     log('parsing event');
     var data = {};
     data.name = document.querySelector('[name="C_EDITGOAL-name"]').value;
     data.active = this.getMarkedRadio('C_EDITGOAL-active').value;
-    
+
     data.categoryMatchType = document.querySelector('[name="C_EDITGOAL-CATEGORY_0"]').value;
     data.categoryField = document.querySelector('[name="C_EDITGOAL-CATEGORY_0_field"]').value;
-    
+
     data.actionMatchType = document.querySelector('[name="C_EDITGOAL-ACTION_0"]').value;
     data.actionField = document.querySelector('[name="C_EDITGOAL-ACTION_0_field"]').value;
-    
+
     data.labelMatchType = document.querySelector('[name="C_EDITGOAL-LABEL_0"]').value;
     data.labelField = document.querySelector('[name="C_EDITGOAL-LABEL_0_field"]').value;
-    
+
     data.valueMatchType = document.querySelector('[name="C_EDITGOAL-VALUE_0"]').value;
     data.valueField = document.querySelector('[name="C_EDITGOAL-VALUE_0_field"]').value;
-    
+
     data.useEventValue = this.getMarkedRadio('C_EDITGOAL-useEventValue').value;
-    
+
     data.monetaryValue = document.querySelector('[name="C_EDITGOAL-monetaryValue"]').value;
     this.data = data;
     return data;
-}
+};
 

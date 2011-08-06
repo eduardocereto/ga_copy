@@ -24,11 +24,11 @@ GaPaste.prototype.setMarkedRadio = function(name, value) {
     r.checked = true;
 };
 
-GaPaste.prototype.fireChange = function(elem){
+GaPaste.prototype.fireChange = function(elem) {
     var evt = document.createEvent('HTMLEvents');
     evt.initEvent('change', true, true, window);
     elem.dispatchEvent(evt);
-}
+};
 
 /********************/
 /*** GOAL PASTERS ***/
@@ -47,13 +47,13 @@ GaPaste.prototype.pasteGoal_urlDest = function() {
     document.querySelector('[name="C_EDITGOAL-matchType"]').value = data.matchType;
     document.querySelector('[name="C_EDITGOAL-caseSensitive"]').checked = data.caseSensitive;
     document.querySelector('[name="C_EDITGOAL-monetaryValue"]').value = data.monetaryValue;
-    
+
     if (data.addFunnel) {
         document.querySelector('[name="C_EDITGOAL-addFunnel"]').checked = data.addFunnel;
         // Double click to fire the event and keep the state.
         document.querySelector('[name="C_EDITGOAL-addFunnel"]').click();
         document.querySelector('[name="C_EDITGOAL-addFunnel"]').click();
-        
+
         document.querySelector('[name="C_EDITGOAL-step1Required"]').checked = data.step1Required;
 
         s = document.querySelectorAll('[name="C_EDITGOAL-stepPath"]');
@@ -84,66 +84,66 @@ GaPaste.prototype.pasteGoal_urlDest = function() {
     return true;
 };
 
-GaPaste.prototype.pasteGoal_engTime = function(){
+GaPaste.prototype.pasteGoal_engTime = function() {
     log('Pasting engTime');
     var data = this.data;
     document.querySelector('[name="C_EDITGOAL-name"]').value = data.name;
     this.setMarkedRadio('C_EDITGOAL-active', data.active);
-    
+
     this.setMarkedRadio('C_EDITGOAL-goalType', 'Visit_TimeOnSite');
     document.querySelector('[name="C_EDITGOAL-goalType"]:checked').click();
-    
-    document.querySelector('[name="C_EDITGOAL-condition"]').value= data.condition;
+
+    document.querySelector('[name="C_EDITGOAL-condition"]').value = data.condition;
     document.querySelector('[name="C_EDITGOAL-hours"]').value = data.hours;
     document.querySelector('[name="C_EDITGOAL-minutes"]').value = data.minutes;
     document.querySelector('[name="C_EDITGOAL-seconds"]').value = data.seconds;
     document.querySelector('[name="C_EDITGOAL-monetaryValue"]').value = data.monetaryValue;
     return true;
-}
+};
 
-GaPaste.prototype.pasteGoal_engPages = function(){
+GaPaste.prototype.pasteGoal_engPages = function() {
     log('Pasting engPages');
     var data = this.data;
     document.querySelector('[name="C_EDITGOAL-name"]').value = data.name;
     this.setMarkedRadio('C_EDITGOAL-active', data.active);
-    
+
     this.setMarkedRadio('C_EDITGOAL-goalType', 'Visit_NumPages');
     document.querySelector('[name="C_EDITGOAL-goalType"]:checked').click();
-    
+
     document.querySelector('[name="C_EDITGOAL-condition"]').value = data.condition;
     document.querySelector('[name="C_EDITGOAL-pages"]').value = data.pages;
     document.querySelector('[name="C_EDITGOAL-monetaryValue"]').value = data.monetaryValue;
     return true;
-}
+};
 
-GaPaste.prototype.pasteGoal_event = function(){
+GaPaste.prototype.pasteGoal_event = function() {
 log('Pasting event');
     var data = this.data;
     document.querySelector('[name="C_EDITGOAL-name"]').value = data.name;
     this.setMarkedRadio('C_EDITGOAL-active', data.active);
-    
+
     this.setMarkedRadio('C_EDITGOAL-goalType', 'Event');
     document.querySelector('[name="C_EDITGOAL-goalType"]:checked').click();
-    
+
     document.querySelector('[name="C_EDITGOAL-CATEGORY_0"]').value = data.categoryMatchType;
     this.fireChange(document.querySelector('[name="C_EDITGOAL-CATEGORY_0"]'));
     document.querySelector('[name="C_EDITGOAL-CATEGORY_0_field"]').value = data.categoryField;
-    
+
     document.querySelector('[name="C_EDITGOAL-ACTION_0"]').value = data.actionMatchType;
     this.fireChange(document.querySelector('[name="C_EDITGOAL-ACTION_0"]'));
     document.querySelector('[name="C_EDITGOAL-ACTION_0_field"]').value = data.actionField;
-    
+
     document.querySelector('[name="C_EDITGOAL-LABEL_0"]').value = data.labelMatchType;
     this.fireChange(document.querySelector('[name="C_EDITGOAL-LABEL_0"]'));
     document.querySelector('[name="C_EDITGOAL-LABEL_0_field"]').value = data.labelField;
-    
+
     document.querySelector('[name="C_EDITGOAL-VALUE_0"]').value = data.valueMatchType;
     this.fireChange(document.querySelector('[name="C_EDITGOAL-VALUE_0"]'));
     document.querySelector('[name="C_EDITGOAL-VALUE_0_field"]').value = data.valueField;
-    
+
      this.setMarkedRadio('C_EDITGOAL-useEventValue', data.useEventValue);
      document.querySelector('[name="C_EDITGOAL-useEventValue"]:checked').click();
-    
+
     document.querySelector('[name="C_EDITGOAL-monetaryValue"]').value = data.monetaryValue;
     return true;
-}
+};
