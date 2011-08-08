@@ -2,10 +2,10 @@
     "name": "GA Copy and Paste",
     "version": "0.10",
     "description": "Copy and Paste Goals and Filters for Google Analytics",
-    "icons": { 
+    "icons": {
         "16": "icon16.png",
         "48": "icon48.png",
-        "128": "icon128.png" 
+        "128": "icon128.png"
     },
     "page_action": {
         "default_title": "GA copy & paste",
