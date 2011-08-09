@@ -147,3 +147,4 @@ log('Pasting event');
     document.querySelector('[name="C_EDITGOAL-monetaryValue"]').value = data.monetaryValue;
     return true;
 };
+

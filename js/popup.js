@@ -2,26 +2,34 @@ function warn(text) {
     $('#warn').text(text).show();
     setTimeout(function() {
         $('#warn').text('').hide();
-    }, 3000);
+    }, 4000);
 }
 
 function _handle_response(response) {
     try {
         if (response.error) {
+            if (response.error_message) {
+                warn(response.error_message);
+            }else {
+                warn('Error while performing this action.');
+            }
             return false;
         }
         if (response.action === 'check') {
             $('#copy_but').prop('disabled', !response.data);
             return true;
         }
-        var id = response.type + '_' + response.data.name;
-        id = id.replace(/\s+/g, '-');
-        localStorage[id] = JSON.stringify(response);
+        if (response.action === 'copy') {
+            var id = response.type + '_' + response.data.name;
+            id = id.replace(/\s+/g, '-');
+            localStorage[id] = JSON.stringify(response);
 
-        _gaq.push(['_trackEvent', 'Copy', response.type, response.variation]);
+            _gaq.push(['_trackEvent', 'Copy', response.type, response.variation]);
 
-        init_popup();
-        return true;
+            init_popup();
+            return true;
+        }
+        return false;
     }catch (e) {
         gaException(e);
     }
@@ -53,7 +61,8 @@ $(document).ready(function() {
                 _gaq.push(['_trackEvent', 'Paste', data.type, data.variation]);
                 send_action('paste', data);
             }else {
-                console.log('Rule not found');
+                //console.log('Rule not found');
+                return false;
             }
         });
 

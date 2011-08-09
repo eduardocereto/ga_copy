@@ -7,6 +7,8 @@ function log() {
 
 function GaCopy() {
     this.version = VERSION;
+    this.error = false;
+    this.error_message = undefined;
 }
 
 GaCopy.prototype.check = function() {
@@ -76,8 +78,10 @@ GaCopy.prototype.copy = function() {
         if (this['copyFilter_' + this.variation]) {
             return this['copyFilter_' + this.variation]();
         }
+    }else{
+        this.triggerError('Goal/Filter not found.');
+        return false;
     }
-    return false;
 };
 
 GaCopy.prototype.getMarkedCheckboxes = function(name) {
@@ -103,14 +107,22 @@ GaCopy.prototype.save = function() {
     ret.data = this.data;
     ret.type = this.type;
     ret.variation = this.variation;
+    ret.error = this.error;
+    ret.error_message = this.error_message;
     return ret;
 };
 
+GaCopy.prototype.triggerError = function(msg) {
+    this.error = true;
+    this.error_message = msg;
+};
 /**********************/
 /*** FILTER PARSERS ***/
 /**********************/
 
 GaCopy.prototype.copyFilter_PREDEFINED = function() {
+    return this.triggerError('Predefined Filters are not supported.');
+
     log('parsing PREDEFINED');
     var data = {};
 
@@ -124,15 +136,65 @@ GaCopy.prototype.copyFilter_PREDEFINED = function() {
     this.data = data;
     return data;
 };
-GaCopy.prototype.copyFilter_PREDEFINED_domainName = function() {};
-GaCopy.prototype.copyFilter_PREDEFINED_ipAddress = function() {};
-GaCopy.prototype.copyFilter_PREDEFINED_subDirectory = function() {};
-GaCopy.prototype.copyFilter_EXCLUDE = function() {};
-GaCopy.prototype.copyFilter_INCLUDE = function() {};
-GaCopy.prototype.copyFilter_LOWER = function() {};
-GaCopy.prototype.copyFilter_UPPER = function() {};
-GaCopy.prototype.copyFilter_REPLACE = function() {};
-GaCopy.prototype.copyFilter_ADVANCED = function() {};
+GaCopy.prototype.copyFilter_PREDEFINED_domainName = function() {
+    return this.triggerError('Predefined Filters are not supported.');
+};
+GaCopy.prototype.copyFilter_PREDEFINED_ipAddress = function() {
+    return this.triggerError('Predefined Filters are not supported.');
+};
+GaCopy.prototype.copyFilter_PREDEFINED_subDirectory = function() {
+    return this.triggerError('Predefined Filters are not supported.');
+};
+GaCopy.prototype.copyFilter_EXCLUDE = function() {
+    log('Parsing Exclude');
+    return this.copyFilter_INCLUDE();
+};
+GaCopy.prototype.copyFilter_INCLUDE = function() {
+    log('parsing Include');
+    var data = {};
+    data.filterField = document.querySelector('[name="C_EDITFILTER-filterField"]').value;
+    data.filterExpression = document.querySelector('[name="C_EDITFILTER-filterExpression"]').value;
+    data.caseSensitive = document.querySelector('[name="C_EDITFILTER-caseSensitive"]:checked').value;
+    this.data = data;
+    return data;
+};
+GaCopy.prototype.copyFilter_LOWER = function() {
+    log('parsing Lower');
+    var data = {};
+    data.filterField = document.querySelector('[name="C_EDITFILTER-filterField"]').value;
+    this.data = data;
+    return data;
+};
+GaCopy.prototype.copyFilter_UPPER = function() {
+    log('parsing Upper');
+    return this.copyFilter_LOWER();
+};
+GaCopy.prototype.copyFilter_REPLACE = function() {
+    log('parsing Replace');
+    var data = {};
+    data.filterField = document.querySelector('[name="C_EDITFILTER-filterField"]').value;
+    data.searchString = document.querySelector('[name="C_EDITFILTER-searchString"]').value;
+    data.replaceString = document.querySelector('[name="C_EDITFILTER-replaceString"]').value;
+    data.caseSensitive = document.querySelector('[name="C_EDITFILTER-caseSensitive"]:checked').value;
+    this.data = data;
+    return data;
+};
+GaCopy.prototype.copyFilter_ADVANCED = function() {
+    log('parsing Advanced');
+    var data = {};
+    data.customFilterA = document.querySelector('[name="C_EDITFILTER-customFilterA"]').value;
+    data.customFilterB = document.querySelector('[name="C_EDITFILTER-customFilterB"]').value;
+    data.customFilterC = document.querySelector('[name="C_EDITFILTER-customFilterC"]').value;
+    data.customFilterAExpression = document.querySelector('[name="C_EDITFILTER-customFilterAExpression"]').value;
+    data.customFilterBExpression = document.querySelector('[name="C_EDITFILTER-customFilterBExpression"]').value;
+    data.customFilterCExpression = document.querySelector('[name="C_EDITFILTER-customFilterCExpression"]').value;
+    data.filterARequired = document.querySelector('[name="C_EDITFILTER-filterARequired"]:checked').value;
+    data.filterBRequired = document.querySelector('[name="C_EDITFILTER-filterBRequired"]:checked').value;
+    data.filterCOverride = document.querySelector('[name="C_EDITFILTER-filterCOverride"]:checked').value;
+    data.caseSensitive = document.querySelector('[name="C_EDITFILTER-caseSensitive"]:checked').value;
+    this.data = data;
+    return data;
+};
 
 
 /********************/

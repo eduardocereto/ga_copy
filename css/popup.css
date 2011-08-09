@@ -75,7 +75,7 @@ li{
 }
 
 .paste{
-    -webkit-transition: background .15s ease-in-out;
+    transition: background .15s ease-in-out;
 }
 
 #goal_list .paste:hover{
@@ -152,9 +152,10 @@ header{
     text-align: center;
     padding-top: 2px;
     width: 240px;
-    opacity: 0.8;
-    box-shadow: rgba(0,0,0, .3) 0px 2px 3px;
+    box-shadow: rgba(0,0,0, .2) 0px 2px 3px;
     font-size: .76em;
     display: none;
+    font-weight: bold;
+    transition: display .5s ease-in-out;
 }
 

@@ -5,7 +5,7 @@ chrome.extension.onRequest.addListener(
             if (_gac.copy()) {
                 sendResponse(_gac.save());
             }else {
-                sendResponse({});
+                sendResponse(_gac.copy());
             }
         }
         if (request.action == 'paste') {
@@ -26,5 +26,4 @@ chrome.extension.onRequest.addListener(
             });
         }
 });
-
 
