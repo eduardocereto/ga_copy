@@ -1,5 +1,3 @@
-
-
 function GaPaste(obj) {
     this.version = obj.version;
     if (this.version !== VERSION) {
@@ -11,6 +9,7 @@ function GaPaste(obj) {
 }
 
 GaPaste.prototype.paste = function() {
+    log('paste', this)
     if (this.type === 'goal' && this['pasteGoal_' + this.variation]) {
         return this['pasteGoal_' + this.variation]();
     }
@@ -28,6 +27,33 @@ GaPaste.prototype.fireChange = function(elem) {
     var evt = document.createEvent('HTMLEvents');
     evt.initEvent('change', true, true, window);
     elem.dispatchEvent(evt);
+};
+
+/**********************/
+/*** FILTER PASTERS ***/
+/**********************/
+GaPaste.prototype.pasteFilter_ADVANCED = function() {
+    log('pasting Advanced');
+    var data = this.data;
+    document.querySelector('[name="C_EDITFILTER-name"]').value = data.name;
+    
+    this.setMarkedRadio('C_EDITFILTER-typeCustom', "true");
+    document.querySelector('[name="C_EDITFILTER-typeCustom"]:checked').click();
+    this.setMarkedRadio('C_EDITFILTER-filterType', "ADVANCED");
+    document.querySelector('[name="C_EDITFILTER-filterType"]:checked').click();
+    
+    
+    document.querySelector('[name="C_EDITFILTER-customFilterA"]').value = data.customFilterA;
+    document.querySelector('[name="C_EDITFILTER-customFilterB"]').value = data.customFilterB;
+    document.querySelector('[name="C_EDITFILTER-customFilterC"]').value = data.customFilterC;
+    document.querySelector('[name="C_EDITFILTER-customFilterAExpression"]').value = data.customFilterAExpression;
+    document.querySelector('[name="C_EDITFILTER-customFilterBExpression"]').value = data.customFilterBExpression;
+    document.querySelector('[name="C_EDITFILTER-customFilterCExpression"]').value = data.customFilterCExpression;
+    this.setMarkedRadio('C_EDITFILTER-filterARequired', data.filterARequired);
+    this.setMarkedRadio('C_EDITFILTER-filterBRequired', data.filterBRequired);
+    this.setMarkedRadio('C_EDITFILTER-filterCOverride', data.filterCOverride);
+    this.setMarkedRadio('C_EDITFILTER-caseSensitive', data.caseSensitive);
+    return true;
 };
 
 /********************/

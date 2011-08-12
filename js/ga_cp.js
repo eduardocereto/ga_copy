@@ -1,4 +1,4 @@
-DEBUG = false;
+DEBUG = true;
 VERSION = '1';
 
 function log() {
@@ -109,6 +109,8 @@ GaCopy.prototype.save = function() {
     ret.variation = this.variation;
     ret.error = this.error;
     ret.error_message = this.error_message;
+    ret.action = 'copy';
+    log('Save: ', ret);
     return ret;
 };
 
@@ -116,6 +118,7 @@ GaCopy.prototype.triggerError = function(msg) {
     this.error = true;
     this.error_message = msg;
 };
+
 /**********************/
 /*** FILTER PARSERS ***/
 /**********************/
@@ -152,6 +155,7 @@ GaCopy.prototype.copyFilter_EXCLUDE = function() {
 GaCopy.prototype.copyFilter_INCLUDE = function() {
     log('parsing Include');
     var data = {};
+    data.name = document.querySelector('[name="C_EDITFILTER-name"]').value;
     data.filterField = document.querySelector('[name="C_EDITFILTER-filterField"]').value;
     data.filterExpression = document.querySelector('[name="C_EDITFILTER-filterExpression"]').value;
     data.caseSensitive = document.querySelector('[name="C_EDITFILTER-caseSensitive"]:checked').value;
@@ -161,6 +165,7 @@ GaCopy.prototype.copyFilter_INCLUDE = function() {
 GaCopy.prototype.copyFilter_LOWER = function() {
     log('parsing Lower');
     var data = {};
+    data.name = document.querySelector('[name="C_EDITFILTER-name"]').value;
     data.filterField = document.querySelector('[name="C_EDITFILTER-filterField"]').value;
     this.data = data;
     return data;
@@ -172,6 +177,7 @@ GaCopy.prototype.copyFilter_UPPER = function() {
 GaCopy.prototype.copyFilter_REPLACE = function() {
     log('parsing Replace');
     var data = {};
+    data.name = document.querySelector('[name="C_EDITFILTER-name"]').value;
     data.filterField = document.querySelector('[name="C_EDITFILTER-filterField"]').value;
     data.searchString = document.querySelector('[name="C_EDITFILTER-searchString"]').value;
     data.replaceString = document.querySelector('[name="C_EDITFILTER-replaceString"]').value;
@@ -182,6 +188,7 @@ GaCopy.prototype.copyFilter_REPLACE = function() {
 GaCopy.prototype.copyFilter_ADVANCED = function() {
     log('parsing Advanced');
     var data = {};
+    data.name = document.querySelector('[name="C_EDITFILTER-name"]').value;
     data.customFilterA = document.querySelector('[name="C_EDITFILTER-customFilterA"]').value;
     data.customFilterB = document.querySelector('[name="C_EDITFILTER-customFilterB"]').value;
     data.customFilterC = document.querySelector('[name="C_EDITFILTER-customFilterC"]').value;

@@ -1,3 +1,11 @@
+DEBUG = true;
+VERSION = '1';
+
+function log() {
+    if (DEBUG) console.log(arguments);
+}
+
+
 function warn(text) {
     $('#warn').text(text).show();
     setTimeout(function() {
@@ -40,7 +48,6 @@ function send_action(action, data) {
         'action': action,
         'obj': data
     };
-    console.log('Req: ', req);
     chrome.tabs.getSelected(null, function(tab) {
         chrome.tabs.sendRequest(tab.id, req, _handle_response);
     });
@@ -61,7 +68,7 @@ $(document).ready(function() {
                 _gaq.push(['_trackEvent', 'Paste', data.type, data.variation]);
                 send_action('paste', data);
             }else {
-                //console.log('Rule not found');
+                log('Rule not found');
                 return false;
             }
         });

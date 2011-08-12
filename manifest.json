@@ -23,13 +23,13 @@
             "https://www.google.com/analytics/web/*"
         ],
         "js":[
-            "js/jquery.js",
             "js/ga_cp.js",
             "js/ga_paste.js",
             "js/ga_dispatcher.js"
         ],
         "run_at": "document_end"
         }
-    ]
+    ],
+    "content_security_policy": "default-src 'self' https://ssl.google-analytics.com https://apis.google.com"
 }
 
