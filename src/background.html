@@ -3,6 +3,9 @@
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-15588855-4']);
+    try{
+        _gaq.push(['_setCustomVar', 1, 'version', chrome.app.getDetails().version, 2]);
+    }catch(e){}
   _gaq.push(['_trackPageview', '']);
   _gaq.push(['_trackPageLoadTime']);
 
