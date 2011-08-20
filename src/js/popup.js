@@ -35,6 +35,10 @@ function _handle_response(response) {
             _gaq.push(['_trackEvent', 'Copy', response.type, response.variation]);
 
             init_popup();
+            
+            // Pulse
+            $('#'+id).parent().hide().fadeIn(300);
+            
             return true;
         }
         return false;

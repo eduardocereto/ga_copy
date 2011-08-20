@@ -36,6 +36,7 @@ h1{
 p{
     font-size: .8em;
     margin: 0 5px;
+    color: #999;
 }
 
 ul{
@@ -67,15 +68,12 @@ li{
     width: 290px;
     float:left;
     /*text-shadow: rgba(0,0,0, .4) 0 1px 0;*/
+    transition: background .15s ease-in-out;
 }
 
 #goal_list .paste{
     background-color: #8FACFC;
     border-color: #51649E;
-}
-
-.paste{
-    transition: background .15s ease-in-out;
 }
 
 #goal_list .paste:hover{
