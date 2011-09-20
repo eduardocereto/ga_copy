@@ -1,6 +1,6 @@
 {
     "name": "GA Copy and Paste",
-    "version": "1.2",
+    "version": "1.3",
     "description": "Copy and Paste Goals and Filters for Google Analytics",
     "icons": {
         "16": "icon16.png",
@@ -30,6 +30,6 @@
         "run_at": "document_end"
         }
     ],
-    "content_security_policy": "default-src 'self' https://ssl.google-analytics.com https://apis.google.com"
+    "content_security_policy": "default-src 'self' 'unsafe-inline' 'https://ssl.google-analytics.com' 'https://apis.google.com'"
 }
 
