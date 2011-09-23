@@ -7,6 +7,7 @@ html{
 
 body{
     width: 340px;
+    /*min-height: 330px;*/
     margin: 0;
     padding: 0;
     font-size: 1em;
