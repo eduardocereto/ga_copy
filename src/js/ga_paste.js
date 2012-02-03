@@ -19,7 +19,7 @@ GaPaste.prototype.paste = function() {
 };
 
 GaPaste.prototype.setMarkedRadio = function(name, value) {
-    var r = document.querySelector('[name="' + name + '"][value="' + value + '"]');
+    var r = document.querySelector('[name$="' + name + '"][value="' + value + '"]');
     r.checked = true;
 };
 
@@ -35,24 +35,24 @@ GaPaste.prototype.fireChange = function(elem) {
 GaPaste.prototype.pasteFilter_ADVANCED = function() {
     log('pasting Advanced');
     var data = this.data;
-    document.querySelector('[name="u-name"]').value = data.name;
+    document.querySelector('[name$="-name"]').value = data.name;
     
-    this.setMarkedRadio('u-typeCustom', "true");
-    document.querySelector('[name="u-typeCustom"]:checked').click();
-    this.setMarkedRadio('u-filterType', "ADVANCED");
-    document.querySelector('[name="u-filterType"]:checked').click();
+    this.setMarkedRadio('-typeCustom', "true");
+    document.querySelector('[name$="-typeCustom"]:checked').click();
+    this.setMarkedRadio('-filterType', "ADVANCED");
+    document.querySelector('[name$="-filterType"]:checked').click();
     
     
-    document.querySelector('[name="u-customFilterA"]').value = data.customFilterA;
-    document.querySelector('[name="u-customFilterB"]').value = data.customFilterB;
-    document.querySelector('[name="u-customFilterC"]').value = data.customFilterC;
-    document.querySelector('[name="u-customFilterAExpression"]').value = data.customFilterAExpression;
-    document.querySelector('[name="u-customFilterBExpression"]').value = data.customFilterBExpression;
-    document.querySelector('[name="u-customFilterCExpression"]').value = data.customFilterCExpression;
-    this.setMarkedRadio('u-filterARequired', data.filterARequired);
-    this.setMarkedRadio('u-filterBRequired', data.filterBRequired);
-    this.setMarkedRadio('u-filterCOverride', data.filterCOverride);
-    this.setMarkedRadio('u-caseSensitive', data.caseSensitive);
+    document.querySelector('[name$="-customFilterA"]').value = data.customFilterA;
+    document.querySelector('[name$="-customFilterB"]').value = data.customFilterB;
+    document.querySelector('[name$="-customFilterC"]').value = data.customFilterC;
+    document.querySelector('[name$="-customFilterAExpression"]').value = data.customFilterAExpression;
+    document.querySelector('[name$="-customFilterBExpression"]').value = data.customFilterBExpression;
+    document.querySelector('[name$="-customFilterCExpression"]').value = data.customFilterCExpression;
+    this.setMarkedRadio('-filterARequired', data.filterARequired);
+    this.setMarkedRadio('-filterBRequired', data.filterBRequired);
+    this.setMarkedRadio('-filterCOverride', data.filterCOverride);
+    this.setMarkedRadio('-caseSensitive', data.caseSensitive);
     return true;
 };
 
@@ -63,26 +63,26 @@ GaPaste.prototype.pasteFilter_ADVANCED = function() {
 GaPaste.prototype.pasteGoal_urlDest = function() {
     log('Pasting UrlDest');
     var s, i, data = this.data;
-    document.querySelector('[name="x-name"]').value = data.name;
-    this.setMarkedRadio('x-active', data.active);
+    document.querySelector('[name$="-name"]').value = data.name;
+    this.setMarkedRadio('-active', data.active);
 
-    this.setMarkedRadio('x-goalType', 'Page');
-    document.querySelector('[name="x-goalType"]:checked').click();
+    this.setMarkedRadio('-goalType', 'Page');
+    document.querySelector('[name$="-goalType"]:checked').click();
 
-    document.querySelector('[name="x-path"]').value = data.path;
-    document.querySelector('[name="x-matchType"]').value = data.matchType;
-    document.querySelector('[name="x-caseSensitive"]').checked = data.caseSensitive;
-    document.querySelector('[name="x-monetaryValue"]').value = data.monetaryValue;
+    document.querySelector('[name$="-path"]').value = data.path;
+    document.querySelector('[name$="-matchType"]').value = data.matchType;
+    document.querySelector('[name$="-caseSensitive"]').checked = data.caseSensitive;
+    document.querySelector('[name$="-monetaryValue"]').value = data.monetaryValue;
 
     if (data.addFunnel) {
-        document.querySelector('[name="x-addFunnel"]').checked = data.addFunnel;
+        document.querySelector('[name$="-addFunnel"]').checked = data.addFunnel;
         // Double click to fire the event and keep the state.
-        document.querySelector('[name="x-addFunnel"]').click();
-        document.querySelector('[name="x-addFunnel"]').click();
+        document.querySelector('[name$="-addFunnel"]').click();
+        document.querySelector('[name$="-addFunnel"]').click();
 
-        document.querySelector('[name="x-step1Required"]').checked = data.step1Required;
+        document.querySelector('[name$="-step1Required"]').checked = data.step1Required;
 
-        s = document.querySelectorAll('[name="x-stepPath"]');
+        s = document.querySelectorAll('[name$="-stepPath"]');
 
         // Let's add more steps if needed.
         while (s.length < data.stepPaths.length) {
@@ -95,14 +95,14 @@ GaPaste.prototype.pasteGoal_urlDest = function() {
                 break;
             }
             document.querySelector('.ACTION-addFunnel').dispatchEvent(evt);
-            s = document.querySelectorAll('[name="x-stepPath"]');
+            s = document.querySelectorAll('[name$="-stepPath"]');
         }
 
         for (i = 0; i < data.stepPaths.length; i++) {
                 s[i].value = data.stepPaths[i];
         }
 
-        s = document.querySelectorAll('[name="x-stepName"]');
+        s = document.querySelectorAll('[name$="-stepName"]');
         for (i = 0; i < data.stepNames.length; i++) {
             s[i].value = data.stepNames[i];
         }
@@ -113,64 +113,64 @@ GaPaste.prototype.pasteGoal_urlDest = function() {
 GaPaste.prototype.pasteGoal_engTime = function() {
     log('Pasting engTime');
     var data = this.data;
-    document.querySelector('[name="x-name"]').value = data.name;
-    this.setMarkedRadio('x-active', data.active);
+    document.querySelector('[name$="-name"]').value = data.name;
+    this.setMarkedRadio('-active', data.active);
 
-    this.setMarkedRadio('x-goalType', 'Visit_TimeOnSite');
-    document.querySelector('[name="x-goalType"]:checked').click();
+    this.setMarkedRadio('-goalType', 'Visit_TimeOnSite');
+    document.querySelector('[name$="-goalType"]:checked').click();
 
-    document.querySelector('[name="x-condition"]').value = data.condition;
-    document.querySelector('[name="x-hours"]').value = data.hours;
-    document.querySelector('[name="x-minutes"]').value = data.minutes;
-    document.querySelector('[name="x-seconds"]').value = data.seconds;
-    document.querySelector('[name="x-monetaryValue"]').value = data.monetaryValue;
+    document.querySelector('[name$="-condition"]').value = data.condition;
+    document.querySelector('[name$="-hours"]').value = data.hours;
+    document.querySelector('[name$="-minutes"]').value = data.minutes;
+    document.querySelector('[name$="-seconds"]').value = data.seconds;
+    document.querySelector('[name$="-monetaryValue"]').value = data.monetaryValue;
     return true;
 };
 
 GaPaste.prototype.pasteGoal_engPages = function() {
     log('Pasting engPages');
     var data = this.data;
-    document.querySelector('[name="x-name"]').value = data.name;
-    this.setMarkedRadio('x-active', data.active);
+    document.querySelector('[name$="-name"]').value = data.name;
+    this.setMarkedRadio('-active', data.active);
 
-    this.setMarkedRadio('x-goalType', 'Visit_NumPages');
-    document.querySelector('[name="x-goalType"]:checked').click();
+    this.setMarkedRadio('-goalType', 'Visit_NumPages');
+    document.querySelector('[name$="-goalType"]:checked').click();
 
-    document.querySelector('[name="x-condition"]').value = data.condition;
-    document.querySelector('[name="x-pages"]').value = data.pages;
-    document.querySelector('[name="x-monetaryValue"]').value = data.monetaryValue;
+    document.querySelector('[name$="-condition"]').value = data.condition;
+    document.querySelector('[name$="-pages"]').value = data.pages;
+    document.querySelector('[name$="-monetaryValue"]').value = data.monetaryValue;
     return true;
 };
 
 GaPaste.prototype.pasteGoal_event = function() {
 log('Pasting event');
     var data = this.data;
-    document.querySelector('[name="x-name"]').value = data.name;
-    this.setMarkedRadio('x-active', data.active);
+    document.querySelector('[name$="-name"]').value = data.name;
+    this.setMarkedRadio('-active', data.active);
 
-    this.setMarkedRadio('x-goalType', 'Event');
-    document.querySelector('[name="x-goalType"]:checked').click();
+    this.setMarkedRadio('-goalType', 'Event');
+    document.querySelector('[name$="-goalType"]:checked').click();
 
-    document.querySelector('[name="x-CATEGORY_0"]').value = data.categoryMatchType;
-    this.fireChange(document.querySelector('[name="x-CATEGORY_0"]'));
-    document.querySelector('[name="x-CATEGORY_0_field"]').value = data.categoryField;
+    document.querySelector('[name$="-CATEGORY_0"]').value = data.categoryMatchType;
+    this.fireChange(document.querySelector('[name$="-CATEGORY_0"]'));
+    document.querySelector('[name$="-CATEGORY_0_field"]').value = data.categoryField;
 
-    document.querySelector('[name="x-ACTION_0"]').value = data.actionMatchType;
-    this.fireChange(document.querySelector('[name="x-ACTION_0"]'));
-    document.querySelector('[name="x-ACTION_0_field"]').value = data.actionField;
+    document.querySelector('[name$="-ACTION_0"]').value = data.actionMatchType;
+    this.fireChange(document.querySelector('[name$="-ACTION_0"]'));
+    document.querySelector('[name$="-ACTION_0_field"]').value = data.actionField;
 
-    document.querySelector('[name="x-LABEL_0"]').value = data.labelMatchType;
-    this.fireChange(document.querySelector('[name="x-LABEL_0"]'));
-    document.querySelector('[name="x-LABEL_0_field"]').value = data.labelField;
+    document.querySelector('[name$="-LABEL_0"]').value = data.labelMatchType;
+    this.fireChange(document.querySelector('[name$="-LABEL_0"]'));
+    document.querySelector('[name$="-LABEL_0_field"]').value = data.labelField;
 
-    document.querySelector('[name="x-VALUE_0"]').value = data.valueMatchType;
-    this.fireChange(document.querySelector('[name="x-VALUE_0"]'));
-    document.querySelector('[name="x-VALUE_0_field"]').value = data.valueField;
+    document.querySelector('[name$="-VALUE_0"]').value = data.valueMatchType;
+    this.fireChange(document.querySelector('[name$="-VALUE_0"]'));
+    document.querySelector('[name$="-VALUE_0_field"]').value = data.valueField;
 
-     this.setMarkedRadio('x-useEventValue', data.useEventValue);
-     document.querySelector('[name="x-useEventValue"]:checked').click();
+     this.setMarkedRadio('-useEventValue', data.useEventValue);
+     document.querySelector('[name$="-useEventValue"]:checked').click();
 
-    document.querySelector('[name="x-monetaryValue"]').value = data.monetaryValue;
+    document.querySelector('[name$=$"-monetaryValue"]').value = data.monetaryValue;
     return true;
 };
 
