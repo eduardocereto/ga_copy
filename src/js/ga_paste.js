@@ -106,6 +106,8 @@ GaPaste.prototype.pasteGoal_urlDest = function() {
         for (i = 0; i < data.stepNames.length; i++) {
             s[i].value = data.stepNames[i];
         }
+    }else{
+         document.querySelector('[name$="-addFunnel"]').checked = false;
     }
     return true;
 };
