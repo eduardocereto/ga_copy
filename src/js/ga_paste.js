@@ -107,7 +107,10 @@ GaPaste.prototype.pasteGoal_urlDest = function() {
             s[i].value = data.stepNames[i];
         }
     }else{
-         document.querySelector('[name$="-addFunnel"]').checked = false;
+        document.querySelector('[name$="-addFunnel"]').checked = false;
+        // Double click to fire the event and keep the state.
+        document.querySelector('[name$="-addFunnel"]').click();
+        document.querySelector('[name$="-addFunnel"]').click();
     }
     return true;
 };
