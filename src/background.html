@@ -5,8 +5,8 @@
     try{
         _gaq.push(['_setCustomVar', 1, 'version', chrome.app.getDetails().version, 2]);
     }catch(e){}
-  _gaq.push(['_trackPageview', '']);
-  _gaq.push(['_trackPageLoadTime']);
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['_setSessionCookieTimeout', 0]);
 
     (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;

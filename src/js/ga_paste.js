@@ -175,7 +175,7 @@ log('Pasting event');
      this.setMarkedRadio('-useEventValue', data.useEventValue);
      document.querySelector('[name$="-useEventValue"]:checked').click();
 
-    document.querySelector('[name$=$"-monetaryValue"]').value = data.monetaryValue;
+    document.querySelector('[name$="-monetaryValue"]').value = data.monetaryValue;
     return true;
 };
 
