@@ -17,7 +17,9 @@
 
 <script type="text/javascript">
     function checkForValidUrl(tabId, changeInfo, tab){
-        if(tab.url.indexOf('//www.google.com/analytics/web/#management/') > -1){
+        if(tab.url.indexOf('//www.google.com/analytics/web/') > -1 && 
+           tab.url.indexOf('#management') > -1
+        ){
             chrome.pageAction.show(tabId);
         }
     }
