@@ -1,3 +1,4 @@
+
 function GaPaste(obj) {
     this.version = obj.version;
     if (this.version !== VERSION) {
@@ -13,8 +14,11 @@ GaPaste.prototype.paste = function() {
     if (this.type === 'goal' && this['pasteGoal_' + this.variation]) {
         return this['pasteGoal_' + this.variation]();
     }
-    if (this.type === 'filter' && this['pasteFilter_' + this.variation]) {
+    else if (this.type === 'filter' && this['pasteFilter_' + this.variation]) {
         return this['pasteFilter_' + this.variation]();
+    }
+    else {
+        throw "Can't paste: " + this.type + ':' + this.variation;
     }
 };
 

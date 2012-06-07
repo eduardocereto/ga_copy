@@ -2,11 +2,15 @@ chrome.extension.onRequest.addListener(
     function(request, sender, sendResponse) {
         if (request.action == 'copy') {
             var _gac = new GaCopy();
-            var res = _gac.copy();
-            if (res !== false) {
+            log('Copying', _gac);
+            try{
+                _gac.copy();
                 sendResponse(_gac.save());
-            }else {
-                sendResponse(res);
+            }catch (e) {
+                sendResponse({
+                    error: true,
+                    error_message: _gac.error_message || e.message || 'Unknown Copy Error'
+                });
             }
         }
         if (request.action == 'paste') {
@@ -16,7 +20,10 @@ chrome.extension.onRequest.addListener(
                 _gap.paste();
                 sendResponse({});
             }catch (e) {
-                sendResponse({error: true});
+                sendResponse({
+                    error: true,
+                    error_message: e.message || 'Unknown Paste Error'
+                });
             }
         }
         if (request.action == 'check') {

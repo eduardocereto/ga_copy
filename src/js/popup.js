@@ -36,7 +36,7 @@ function _handle_response(response) {
             }else {
                 warn('Error while performing this action.');
             }
-            return false;
+            throw reponse.error_message || 'Unknown Error when performing action';
         }
         if (response.action === 'check') {
             $('#copy_but').prop('disabled', !response.data);
@@ -56,9 +56,10 @@ function _handle_response(response) {
             
             return true;
         }
-        return false;
+        throw "Unknown response type";
     }catch (e) {
         gaException(e);
+        return false;
     }
 }
 

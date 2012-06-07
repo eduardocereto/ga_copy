@@ -80,7 +80,6 @@ GaCopy.prototype.copy = function() {
         }
     }else{
         this.triggerError('Goal/Filter not found.');
-        return false;
     }
 };
 
@@ -117,6 +116,7 @@ GaCopy.prototype.save = function() {
 GaCopy.prototype.triggerError = function(msg) {
     this.error = true;
     this.error_message = msg;
+    throw this.error_message;
 };
 
 /**********************/
