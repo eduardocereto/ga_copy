@@ -1,8 +1,7 @@
 {
   "name": "GA Copy and Paste",
-  "version": "1.9.0",
+  "version": "1.9.2",
   "manifest_version": 2,
-
   "description": "Copy and Paste Goals and Filters for Google Analytics",
   "icons": {
     "16": "icon16.png",
@@ -14,7 +13,6 @@
     "default_icon": "icon16.png",
     "default_popup" : "popup.html"
   },
-
   "permissions": [
       "tabs"
   ],
@@ -36,7 +34,5 @@
     }
   ],
   "incognito": "spanning",
-  "minimum_chrome_version": "18",
-  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
+  "content_security_policy": "script-src 'self' https://apis.google.com https://ssl.google-analytics.com; object-src 'self'"
 }
-
