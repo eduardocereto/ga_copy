@@ -1,34 +1,42 @@
 {
-    "name": "GA Copy and Paste",
-    "version": "1.8.3",
-    "description": "Copy and Paste Goals and Filters for Google Analytics",
-    "icons": {
-        "16": "icon16.png",
-        "48": "icon48.png",
-        "128": "icon128.png"
-    },
-    "page_action": {
-        "default_title": "GA copy & paste",
-        "default_icon": "icon16.png",
-        "popup" : "popup.html"
-    },
-    "permissions": [
-        "tabs"
+  "name": "GA Copy and Paste",
+  "version": "1.9.0",
+  "manifest_version": 2,
+
+  "description": "Copy and Paste Goals and Filters for Google Analytics",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "page_action": {
+    "default_title": "GA copy & paste",
+    "default_icon": "icon16.png",
+    "default_popup" : "popup.html"
+  },
+
+  "permissions": [
+      "tabs"
+  ],
+  "background": {
+    "page": "background.html"
+  },
+  "content_scripts":[
+    {
+    "matches": [
+        "http://www.google.com/analytics/web/*",
+        "https://www.google.com/analytics/web/*"
     ],
-    "background_page": "background.html",
-    "content_scripts":[
-        {
-        "matches": [
-            "http://www.google.com/analytics/web/*",
-            "https://www.google.com/analytics/web/*"
-        ],
-        "js":[
-            "js/ga_cp.js",
-            "js/ga_paste.js",
-            "js/ga_dispatcher.js"
-        ],
-        "run_at": "document_end"
-        }
-    ]
+    "js":[
+        "js/ga_cp.js",
+        "js/ga_paste.js",
+        "js/ga_dispatcher.js"
+    ],
+    "run_at": "document_end"
+    }
+  ],
+  "incognito": "spanning",
+  "minimum_chrome_version": "18",
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
 }
 
